@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto:wght@300;400;700&display=swap');
+     * {
+        padding : 0 ; 
+        margin :0 ; 
+        font-family: 'Montserrat', sans-serif;
+        color :#fff;
+     }
+        body {
+            background : url('giphy.gif') repeat center center;
+           
+            width : 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            margin-top :10%;
+
+        }
+        .container h1 ,h3,button ,.start-game h3 input[type=text],button,.response{
+            padding : 20px;
+        }
+        .container button {
+            margin : 20px;
+        }
+
+
+        input[type="text"] {
+            width: 300px;
+            background : none ; border : none ;
+            border-bottom : 1px solid #888;
+            padding : 10px;margin-right: 10px;
+        } 
+        input[type="text"]::placeholder {
+            color : #fff;
+            font-weight: bolder;
+            font-size : 20px;   
+
+        } 
+        .container button {
+            padding : 10px 50px 10px 50px;
+            background : #000 ;border : 1px solid #fff ;border-radius: 7px;
+            font-size : 20px;
+            font-size : bolder;
+
+        } 
+        .container #start-game {
+            margin-top : 50px;
+            display: none;
+        }
+        
+
+    </style>
+    <div class="container"> 
+        <h1> The rules of this game are quite easy :   </h1>
+        <h3>-> i have guessed a number from 1 to 100 and in order to win you have to find it ;)</h3>
+        <h3> [+] Are you up to the challenge ? [+]</h3>
+        <button id="playButton"  >Play </button>
+        <div id="start-game">
+             <h3>Counter : <span id="counter-var"></span></h3>
+            <input type="text" id="number" placeholder="Enter a value">
+            <button id="button" onclick='play()' >submit</button>
+            <div id="response"></div>
+        </div>
+
+     
+    </div>
+       <script>
+
+            // Declaring functions to variable to turn it to null later ;)))) ! but let won work
+            var start = document.getElementById("playButton").addEventListener('click',()=>{
+                console.log('play game!');
+                document.getElementById("playButton").style.display = 'none';
+                document.getElementById("start-game").style.display = 'block';
+            });
+            let tries = 10 ;
+            var counter = document.getElementById('counter-var');
+            counter.innerText=tries;
+            let random_num = parseInt(Math.random() * 100); 
+            let count = 1; // keep track  of tries
+            
+            function play() {
+                console.log(tries);
+                counter.innerText=tries -1 ;
+                tries -=1 ;
+                let response = document.getElementById('response');
+                let n = parseInt(document.getElementById('number').value);function add() 
+                {let  stat =  ''; count +=1;(n < random_num)?(stat = 'To low'):stat = 'To high !';response.innerText=stat;  if (count == 10) {window.location='playAgain.html';}}if(!isNaN(n)){(n == random_num)? ((count == 3)?response.innerText="Wow you won only after 3 tries !":response.innerText="Congragilations You have won after : "+count+" Tries ! "):(n < random_num || n < random_num )?add():add() ;}else{response.innerText='cant be Empty or other than Number !'}}
+                console.log(random_num)
+        </script>
+
+</body>
+</html>
